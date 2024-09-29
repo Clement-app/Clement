@@ -6,13 +6,14 @@
 //
 
 import SwiftUI
+import Dependencies
 import SwiftData
 
-@main
-struct ClementApp: App {
-    var sharedModelContainer: ModelContainer = {
+enum ModelContainerKey: DependencyKey {
+    static var liveValue: ModelContainer = {
         let schema = Schema([
             Item.self,
+            RuleList.self
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 
@@ -22,11 +23,29 @@ struct ClementApp: App {
             fatalError("Could not create ModelContainer: \(error)")
         }
     }()
+}
+
+@main
+struct ClementApp: App {
+    
+    @Dependency(ModelContainerKey.self) var modelContainer
+    
+    @Dependency(CoordinatorKey.self) var coordinator
+    @AppStorage(Constants.HAS_ONBOARDED) var hasOnboared: Bool = false
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ZStack{
+                Color.background.ignoresSafeArea()
+                Home()
+//                if !hasOnboared {
+//                    OnboardingView()
+//                } else {
+//                    Home()
+//                }
+            }
+        
         }
-        .modelContainer(sharedModelContainer)
+        .modelContainer(modelContainer)
     }
 }

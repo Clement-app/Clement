@@ -6,7 +6,29 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		0948C37B2CA1F6BA00BB0921 /* SafariExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 0948C3722CA1F6B900BB0921 /* SafariExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		0948C39A2CA21EAC00BB0921 /* Factory in Frameworks */ = {isa = PBXBuildFile; productRef = 0948C3992CA21EAC00BB0921 /* Factory */; };
+		0948C3A92CA3164500BB0921 /* Dependencies in Frameworks */ = {isa = PBXBuildFile; productRef = 0948C3A82CA3164500BB0921 /* Dependencies */; };
+		0948C3AB2CA3164500BB0921 /* DependenciesMacros in Frameworks */ = {isa = PBXBuildFile; productRef = 0948C3AA2CA3164500BB0921 /* DependenciesMacros */; };
+		0948C3B92CA3543C00BB0921 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0948C3B82CA3543C00BB0921 /* GoogleService-Info.plist */; };
+		0948C3BA2CA3543C00BB0921 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0948C3B82CA3543C00BB0921 /* GoogleService-Info.plist */; };
+		0948C3BB2CA3543C00BB0921 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0948C3B82CA3543C00BB0921 /* GoogleService-Info.plist */; };
+		0948C3BC2CA3543C00BB0921 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0948C3B82CA3543C00BB0921 /* GoogleService-Info.plist */; };
+		0948C3BF2CA354B300BB0921 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 0948C3BE2CA354B300BB0921 /* FirebaseAnalyticsWithoutAdIdSupport */; };
+		0948C3C12CA354B300BB0921 /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 0948C3C02CA354B300BB0921 /* FirebaseAppCheck */; };
+		09A754B52CA89BEB005DE5B9 /* ClementAdblockIOS.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09A754B42CA89BE3005DE5B9 /* ClementAdblockIOS.xcframework */; };
+		09A754B62CA89BEB005DE5B9 /* ClementAdblockIOS.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 09A754B42CA89BE3005DE5B9 /* ClementAdblockIOS.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
+		0948C3792CA1F6BA00BB0921 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 099FF8A32CA1B61F009BAFA4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0948C3712CA1F6B900BB0921;
+			remoteInfo = SafariExtension;
+		};
 		099FF8BE2CA1B621009BAFA4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 099FF8A32CA1B61F009BAFA4 /* Project object */;
@@ -23,13 +45,59 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		0948C36D2CA1F61F00BB0921 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				0948C37B2CA1F6BA00BB0921 /* SafariExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		09A754B72CA89BEB005DE5B9 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				09A754B62CA89BEB005DE5B9 /* ClementAdblockIOS.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		0948C3722CA1F6B900BB0921 /* SafariExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SafariExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		0948C3B82CA3543C00BB0921 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		099FF8AB2CA1B61F009BAFA4 /* Clement.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clement.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		099FF8BD2CA1B621009BAFA4 /* ClementTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClementTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		099FF8C72CA1B621009BAFA4 /* ClementUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClementUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		09A754B42CA89BE3005DE5B9 /* ClementAdblockIOS.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = ClementAdblockIOS.xcframework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		0948C37C2CA1F6BA00BB0921 /* Exceptions for "SafariExtension" folder in "SafariExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 0948C3712CA1F6B900BB0921 /* SafariExtension */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		0948C3732CA1F6BA00BB0921 /* SafariExtension */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				0948C37C2CA1F6BA00BB0921 /* Exceptions for "SafariExtension" folder in "SafariExtension" target */,
+			);
+			path = SafariExtension;
+			sourceTree = "<group>";
+		};
 		099FF8AD2CA1B61F009BAFA4 /* Clement */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = Clement;
@@ -48,10 +116,23 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		0948C36F2CA1F6B900BB0921 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		099FF8A82CA1B61F009BAFA4 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0948C39A2CA21EAC00BB0921 /* Factory in Frameworks */,
+				0948C3A92CA3164500BB0921 /* Dependencies in Frameworks */,
+				0948C3AB2CA3164500BB0921 /* DependenciesMacros in Frameworks */,
+				09A754B52CA89BEB005DE5B9 /* ClementAdblockIOS.xcframework in Frameworks */,
+				0948C3C12CA354B300BB0921 /* FirebaseAppCheck in Frameworks */,
+				0948C3BF2CA354B300BB0921 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,7 +159,10 @@
 				099FF8AD2CA1B61F009BAFA4 /* Clement */,
 				099FF8C02CA1B621009BAFA4 /* ClementTests */,
 				099FF8CA2CA1B621009BAFA4 /* ClementUITests */,
+				0948C3732CA1F6BA00BB0921 /* SafariExtension */,
 				099FF8AC2CA1B61F009BAFA4 /* Products */,
+				0948C3B82CA3543C00BB0921 /* GoogleService-Info.plist */,
+				09A754A12CA88982005DE5B9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -88,13 +172,44 @@
 				099FF8AB2CA1B61F009BAFA4 /* Clement.app */,
 				099FF8BD2CA1B621009BAFA4 /* ClementTests.xctest */,
 				099FF8C72CA1B621009BAFA4 /* ClementUITests.xctest */,
+				0948C3722CA1F6B900BB0921 /* SafariExtension.appex */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		09A754A12CA88982005DE5B9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				09A754B42CA89BE3005DE5B9 /* ClementAdblockIOS.xcframework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		0948C3712CA1F6B900BB0921 /* SafariExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0948C37D2CA1F6BA00BB0921 /* Build configuration list for PBXNativeTarget "SafariExtension" */;
+			buildPhases = (
+				0948C36E2CA1F6B900BB0921 /* Sources */,
+				0948C36F2CA1F6B900BB0921 /* Frameworks */,
+				0948C3702CA1F6B900BB0921 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				0948C3732CA1F6BA00BB0921 /* SafariExtension */,
+			);
+			name = SafariExtension;
+			packageProductDependencies = (
+			);
+			productName = SafariExtension;
+			productReference = 0948C3722CA1F6B900BB0921 /* SafariExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		099FF8AA2CA1B61F009BAFA4 /* Clement */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 099FF8D12CA1B621009BAFA4 /* Build configuration list for PBXNativeTarget "Clement" */;
@@ -102,16 +217,24 @@
 				099FF8A72CA1B61F009BAFA4 /* Sources */,
 				099FF8A82CA1B61F009BAFA4 /* Frameworks */,
 				099FF8A92CA1B61F009BAFA4 /* Resources */,
+				0948C36D2CA1F61F00BB0921 /* Embed Foundation Extensions */,
+				09A754B72CA89BEB005DE5B9 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				0948C37A2CA1F6BA00BB0921 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				099FF8AD2CA1B61F009BAFA4 /* Clement */,
 			);
 			name = Clement;
 			packageProductDependencies = (
+				0948C3992CA21EAC00BB0921 /* Factory */,
+				0948C3A82CA3164500BB0921 /* Dependencies */,
+				0948C3AA2CA3164500BB0921 /* DependenciesMacros */,
+				0948C3BE2CA354B300BB0921 /* FirebaseAnalyticsWithoutAdIdSupport */,
+				0948C3C02CA354B300BB0921 /* FirebaseAppCheck */,
 			);
 			productName = Clement;
 			productReference = 099FF8AB2CA1B61F009BAFA4 /* Clement.app */;
@@ -173,6 +296,9 @@
 				LastSwiftUpdateCheck = 1600;
 				LastUpgradeCheck = 1600;
 				TargetAttributes = {
+					0948C3712CA1F6B900BB0921 = {
+						CreatedOnToolsVersion = 16.0;
+					};
 					099FF8AA2CA1B61F009BAFA4 = {
 						CreatedOnToolsVersion = 16.0;
 					};
@@ -195,6 +321,11 @@
 			);
 			mainGroup = 099FF8A22CA1B61F009BAFA4;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				0948C3982CA21EAC00BB0921 /* XCRemoteSwiftPackageReference "Factory" */,
+				0948C3A72CA3164500BB0921 /* XCRemoteSwiftPackageReference "swift-dependencies" */,
+				0948C3BD2CA354B300BB0921 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 099FF8AC2CA1B61F009BAFA4 /* Products */;
 			projectDirPath = "";
@@ -203,15 +334,25 @@
 				099FF8AA2CA1B61F009BAFA4 /* Clement */,
 				099FF8BC2CA1B621009BAFA4 /* ClementTests */,
 				099FF8C62CA1B621009BAFA4 /* ClementUITests */,
+				0948C3712CA1F6B900BB0921 /* SafariExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		0948C3702CA1F6B900BB0921 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0948C3BB2CA3543C00BB0921 /* GoogleService-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		099FF8A92CA1B61F009BAFA4 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0948C3B92CA3543C00BB0921 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,6 +360,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0948C3BA2CA3543C00BB0921 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -226,12 +368,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0948C3BC2CA3543C00BB0921 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		0948C36E2CA1F6B900BB0921 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		099FF8A72CA1B61F009BAFA4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -256,6 +406,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		0948C37A2CA1F6BA00BB0921 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0948C3712CA1F6B900BB0921 /* SafariExtension */;
+			targetProxy = 0948C3792CA1F6BA00BB0921 /* PBXContainerItemProxy */;
+		};
 		099FF8BF2CA1B621009BAFA4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 099FF8AA2CA1B61F009BAFA4 /* Clement */;
@@ -269,6 +424,58 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		0948C37E2CA1F6BA00BB0921 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = CY3VNN37JN;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SafariExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = SafariExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = uk.co.catchpoledigital.Clement.SafariExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		0948C37F2CA1F6BA00BB0921 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = CY3VNN37JN;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SafariExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = SafariExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = uk.co.catchpoledigital.Clement.SafariExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		099FF8CF2CA1B621009BAFA4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -404,6 +611,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -433,6 +641,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -521,6 +730,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		0948C37D2CA1F6BA00BB0921 /* Build configuration list for PBXNativeTarget "SafariExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0948C37E2CA1F6BA00BB0921 /* Debug */,
+				0948C37F2CA1F6BA00BB0921 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		099FF8A62CA1B61F009BAFA4 /* Build configuration list for PBXProject "Clement" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -558,6 +776,61 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0948C3982CA21EAC00BB0921 /* XCRemoteSwiftPackageReference "Factory" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hmlongco/Factory.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.3.2;
+			};
+		};
+		0948C3A72CA3164500BB0921 /* XCRemoteSwiftPackageReference "swift-dependencies" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-dependencies";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.4.1;
+			};
+		};
+		0948C3BD2CA354B300BB0921 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.2.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0948C3992CA21EAC00BB0921 /* Factory */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0948C3982CA21EAC00BB0921 /* XCRemoteSwiftPackageReference "Factory" */;
+			productName = Factory;
+		};
+		0948C3A82CA3164500BB0921 /* Dependencies */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0948C3A72CA3164500BB0921 /* XCRemoteSwiftPackageReference "swift-dependencies" */;
+			productName = Dependencies;
+		};
+		0948C3AA2CA3164500BB0921 /* DependenciesMacros */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0948C3A72CA3164500BB0921 /* XCRemoteSwiftPackageReference "swift-dependencies" */;
+			productName = DependenciesMacros;
+		};
+		0948C3BE2CA354B300BB0921 /* FirebaseAnalyticsWithoutAdIdSupport */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0948C3BD2CA354B300BB0921 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsWithoutAdIdSupport;
+		};
+		0948C3C02CA354B300BB0921 /* FirebaseAppCheck */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0948C3BD2CA354B300BB0921 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAppCheck;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 099FF8A32CA1B61F009BAFA4 /* Project object */;
 }
