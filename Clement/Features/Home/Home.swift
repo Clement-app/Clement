@@ -15,19 +15,29 @@ extension Home {
         @Dependency(ContentBlockerKey.self) var contentBlocker
         
         @ObservationIgnored
-        @Dependency(CoordinatorKey.self) var coordinator
-        
-        @ObservationIgnored
         @Dependency(ModelContainerKey.self) var modelContainer
         
+        @ObservationIgnored
+        @Dependency(Coordinator.self) var coordinator
+        
         var isShowingSetupSheet: Bool = false
+        var status = UpdateStatus.updated
         
         func ensureExtensionEnabled() async {
             isShowingSetupSheet = await !contentBlocker.isEnabled
         }
         
-        func refreshAvailableRules() async {
-            try! await coordinator.refreshAvailableRules(with: modelContainer)
+        func refreshFilterLists() async {
+            guard coordinator.shouldUpdate() else {
+                return
+            }
+            status = .updating
+            do {
+                try await coordinator.refreshAvailableRules(with: modelContainer)
+                status = .updated
+            } catch {
+                print(error)
+            }
         }
     }
 }
@@ -37,59 +47,44 @@ struct Home: View {
     @State var viewModel = ViewModel()
     
     @Environment(\.modelContext) private var modelContext
-
     
     var body: some View {
-        VStack {
-            Logo()
-            Spacer()
+        NavigationStack {
             VStack {
-                HStack {
-                    Image("ShieldCheck")
-                      .resizable()
-                      .scaledToFit()
-                      .frame(height: 30)
-                      .foregroundStyle(.accent)
-                    Text("You're up to date").font(.system(.largeTitle, design: .rounded))
-                        .fontWeight(.heavy)
-                        .foregroundStyle(.accent)
+                Logo()
+                Spacer()
+                UpdateStatusView(status: viewModel.status)
+                Spacer()
+                AsyncButton {
+                
+                } label: {
+                    Text("Check for updates")
+                        .frame(maxWidth: 300, maxHeight: 40)
+                }.buttonStyle(.bordered)
+                NavigationLink {
+                    SettingsView()
+                } label: {
+                    Text("Settings").frame(maxWidth: 300, maxHeight: 40)
                 }
-                Text("Last updated 12/12/12 15:03").font(.system(.caption, design: .rounded))
             }
-            Spacer()
-            AsyncButton {
-            
-            } label: {
-                Text("Check for updates")
-                    .frame(maxWidth: 300, maxHeight: 40)
-            }.buttonStyle(.bordered)
-            AsyncButton {
-            
-            } label: {
-                Text("Settings")
-                    .frame(maxWidth: 300, maxHeight: 40)
+            .padding(20)
+            .sheet(isPresented: $viewModel.isShowingSetupSheet) {
+                SetupView().interactiveDismissDisabled()
             }
-        }
-        .padding(20)
-        .sheet(isPresented: $viewModel.isShowingSetupSheet) {
-            SetupView().interactiveDismissDisabled()
-        }
-        .onChange(of: scenePhase) { oldPhase, newPhase in
-//            if newPhase == .active {
-//                Task {
-//                    await viewModel.ensureExtensionEnabled()
-//                }
-//            }
-        }
-        .task {
-            await viewModel.refreshAvailableRules()
+
+            .onChange(of: scenePhase) { oldPhase, newPhase in
+                if newPhase == .active {
+                    Task {
+                        await viewModel.ensureExtensionEnabled()
+                    }
+                }
+            }.task {
+                await viewModel.refreshFilterLists()
+            }
         }
     }
 }
 
 #Preview {
-    ZStack {
-        Color.background.ignoresSafeArea()
-        Home()
-    }
+    Home()
 }

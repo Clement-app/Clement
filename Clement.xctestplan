@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "id" : "3A4E3C7F-4307-4088-B2A9-458796956FF9",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:Clement.xcodeproj",
+        "identifier" : "099FF8BC2CA1B621009BAFA4",
+        "name" : "ClementTests"
+      }
+    }
+  ],
+  "version" : 1
+}

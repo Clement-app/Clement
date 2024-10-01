@@ -8,11 +8,11 @@
 import SwiftUI
 import Dependencies
 import SwiftData
+import IssueReporting
 
 enum ModelContainerKey: DependencyKey {
     static var liveValue: ModelContainer = {
         let schema = Schema([
-            Item.self,
             RuleList.self
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
@@ -30,21 +30,19 @@ struct ClementApp: App {
     
     @Dependency(ModelContainerKey.self) var modelContainer
     
-    @Dependency(CoordinatorKey.self) var coordinator
-    @AppStorage(Constants.HAS_ONBOARDED) var hasOnboared: Bool = false
+    @Dependency(Coordinator.self) var coordinator
+    
+    @AppStorage(UserDefaults.Keys.hasOnboarded.rawValue) var hasOnboarded: Bool = false
 
     var body: some Scene {
         WindowGroup {
-            ZStack{
-                Color.background.ignoresSafeArea()
-                Home()
-//                if !hasOnboared {
-//                    OnboardingView()
-//                } else {
-//                    Home()
-//                }
+            if !isTesting {
+                if !hasOnboarded {
+                    OnboardingView()
+                } else {
+                    Home()
+                }
             }
-        
         }
         .modelContainer(modelContainer)
     }

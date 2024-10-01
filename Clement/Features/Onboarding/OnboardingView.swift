@@ -22,10 +22,8 @@ extension OnboardingView {
         
         func toggleSetupSheet() async {
             if await contentBlocker.isEnabled {
-                print("Mark onboarding as complete")
-                userDefaults.set(true, forKey: Constants.HAS_ONBOARDED)
+                userDefaults.set(true, forKey: UserDefaults.Keys.hasOnboarded.rawValue)
             } else {
-                print("still needs setup")
                 isShowingSetupSheet.toggle()
             }
         }
@@ -40,7 +38,7 @@ struct OnboardingView: View {
         OnboardingItem(title: "Privacy First", headline: "Clement uses Safari's 'Content Blocking Extension' feature and doesn't need any special permissions or access to your browsing data.", image: "OnboardingFour")
     ]
     
-    @State var model = ViewModel()
+    @State var viewModel = ViewModel()
     
     var body: some View {
         VStack(spacing: 20) {
@@ -52,13 +50,13 @@ struct OnboardingView: View {
             }
             .tabViewStyle(PageTabViewStyle())
             AsyncButton {
-              
+                await viewModel.toggleSetupSheet()
             } label: {
                 Text("Get Started")
                     .frame(maxWidth: 300, maxHeight: 40)
             }.buttonStyle(.borderedProminent)
         }
-        .sheet(isPresented: $model.isShowingSetupSheet) {
+        .sheet(isPresented: $viewModel.isShowingSetupSheet) {
             SetupView().presentationDetents([.medium]).presentationDragIndicator(.visible)
         }
         .padding(.vertical, 20)
