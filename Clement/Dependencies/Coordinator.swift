@@ -10,7 +10,7 @@ import Dependencies
 import SwiftData
 
 protocol CoordinatorProtocol {
-    func applyEnabledRuleLists() async throws
+    func applyEnabledRuleLists(with container: ModelContainer) async throws
     func refreshAvailableRules(with container: ModelContainer) async throws
     func shouldUpdate() -> Bool
 }
@@ -21,25 +21,31 @@ enum CoordinatorError: Error {
 
 class Coordinator: CoordinatorProtocol {
     
+    @Dependency(\.fileIO) var fileIO
     @Dependency(UserDefaultsKey.self) var userDefaults
-    @Dependency(DownloaderKey.self) var downloader
-    @Dependency(ParserKey.self) var parser
+    @Dependency(\.downloader) var downloader
+    @Dependency(\.parser) var parser
     @Dependency(\.date.now) var now
     
-    func getDocumentsDirectory() -> URL {
-        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        return paths[0]
-    }
-    
     func refreshAvailableRules(with container: ModelContainer) async throws {
-        let availableRules = try await downloader.availableItems()
+        var availableRules: [RuleList]
+        
+        do {
+            availableRules = try await downloader.availableItems()
+        } catch {
+            throw CoordinatorError.downloadFailed
+        }
         
         // Generate a block list from the specified rules
         for ruleList in availableRules {
-            guard let text = try await downloader.downloadRules(ruleList: ruleList) else {
+            do {
+                guard let text = try await downloader.downloadRules(ruleList) else {
+                    throw CoordinatorError.downloadFailed
+                }
+                try fileIO.writeString("\(ruleList.key).txt", text)
+            } catch {
                 throw CoordinatorError.downloadFailed
             }
-            try text.write(to: getDocumentsDirectory().appendingPathComponent("\(ruleList.key).txt"), atomically: true, encoding: .utf8)
         }
         
         let localContext = ModelContext(container)
@@ -48,6 +54,7 @@ class Coordinator: CoordinatorProtocol {
         }
         try localContext.save()
         
+        try applyEnabledRuleLists(with: container)
         userDefaults.set(now.rawValue, forKey: UserDefaults.Keys.lastUpdated.rawValue)
     }
     
@@ -64,10 +71,32 @@ class Coordinator: CoordinatorProtocol {
         return elapsed > timeToLive
     }
     
+    func printTimeElapsedWhenRunningCode(title:String, operation:()->()) {
+        let startTime = CFAbsoluteTimeGetCurrent()
+        operation()
+        let timeElapsed = CFAbsoluteTimeGetCurrent() - startTime
+        print("Time elapsed for \(title): \(timeElapsed) s.")
+    }
+    
     /**
-     Fetch rules from either the API or cache, download each one and create our content blocker JSON
+     Create our content blocker JSON from our enabled filter lists
      */
-    func applyEnabledRuleLists() async throws {
+    func applyEnabledRuleLists(with container: ModelContainer) throws {
+        let fetchDescriptor = FetchDescriptor<RuleList>(predicate: #Predicate { $0.enabled == true })
+        
+        let localContext = ModelContext(container)
+        let rules = try localContext.fetch(fetchDescriptor)
+        let combinedText = try rules.reduce("") {
+            $0 + "\n" + (try fileIO.getString("\($1.key).txt"))
+        }
+        
+        let parsedBlockerJSON = parser.parseRuleList(combinedText)
+        try fileIO.writeString("blocklist.json", parsedBlockerJSON)
+        
+        guard let jsonCount = (try JSONSerialization.jsonObject(with: parsedBlockerJSON.data(using: .utf8)!) as? Array<Any>)?.count else {
+            return
+        }
+        userDefaults.set(jsonCount, forKey: UserDefaults.Keys.totalRules.rawValue)
     }
 }
 

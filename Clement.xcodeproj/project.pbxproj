@@ -8,15 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		0948C37B2CA1F6BA00BB0921 /* SafariExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 0948C3722CA1F6B900BB0921 /* SafariExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		0948C39A2CA21EAC00BB0921 /* Factory in Frameworks */ = {isa = PBXBuildFile; productRef = 0948C3992CA21EAC00BB0921 /* Factory */; };
-		0948C3A92CA3164500BB0921 /* Dependencies in Frameworks */ = {isa = PBXBuildFile; productRef = 0948C3A82CA3164500BB0921 /* Dependencies */; };
-		0948C3AB2CA3164500BB0921 /* DependenciesMacros in Frameworks */ = {isa = PBXBuildFile; productRef = 0948C3AA2CA3164500BB0921 /* DependenciesMacros */; };
 		0948C3B92CA3543C00BB0921 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0948C3B82CA3543C00BB0921 /* GoogleService-Info.plist */; };
 		0948C3BA2CA3543C00BB0921 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0948C3B82CA3543C00BB0921 /* GoogleService-Info.plist */; };
 		0948C3BB2CA3543C00BB0921 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0948C3B82CA3543C00BB0921 /* GoogleService-Info.plist */; };
 		0948C3BC2CA3543C00BB0921 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0948C3B82CA3543C00BB0921 /* GoogleService-Info.plist */; };
 		0948C3BF2CA354B300BB0921 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 0948C3BE2CA354B300BB0921 /* FirebaseAnalyticsWithoutAdIdSupport */; };
 		0948C3C12CA354B300BB0921 /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 0948C3C02CA354B300BB0921 /* FirebaseAppCheck */; };
+		09700B162CAC4E31007B97BE /* Dependencies in Frameworks */ = {isa = PBXBuildFile; productRef = 09700B152CAC4E31007B97BE /* Dependencies */; };
+		09700B182CAC4E31007B97BE /* DependenciesMacros in Frameworks */ = {isa = PBXBuildFile; productRef = 09700B172CAC4E31007B97BE /* DependenciesMacros */; };
 		09A754B52CA89BEB005DE5B9 /* ClementAdblockIOS.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09A754B42CA89BE3005DE5B9 /* ClementAdblockIOS.xcframework */; };
 		09A754B62CA89BEB005DE5B9 /* ClementAdblockIOS.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 09A754B42CA89BE3005DE5B9 /* ClementAdblockIOS.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
@@ -88,6 +87,24 @@
 			);
 			target = 0948C3712CA1F6B900BB0921 /* SafariExtension */;
 		};
+		09BBCC432CAC06F500C986D9 /* Exceptions for "Clement" folder in "ClementTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				ClementAdblock.swift,
+				Dependencies/Coordinator.swift,
+				Dependencies/Downloader.swift,
+				Dependencies/FileIO.swift,
+				Dependencies/FileManager.swift,
+				Dependencies/Parser.swift,
+				Dependencies/UserDefaults.swift,
+				"Extensions/Date+Extensions.swift",
+				"Extensions/FileManager+Extensions.swift",
+				"Extensions/URLSession+Extensions.swift",
+				"Extensions/UserDefaults+Extensions.swift",
+				Model/RuleList.swift,
+			);
+			target = 099FF8BC2CA1B621009BAFA4 /* ClementTests */;
+		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -101,6 +118,9 @@
 		};
 		099FF8AD2CA1B61F009BAFA4 /* Clement */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				09BBCC432CAC06F500C986D9 /* Exceptions for "Clement" folder in "ClementTests" target */,
+			);
 			path = Clement;
 			sourceTree = "<group>";
 		};
@@ -128,12 +148,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0948C39A2CA21EAC00BB0921 /* Factory in Frameworks */,
-				0948C3A92CA3164500BB0921 /* Dependencies in Frameworks */,
-				0948C3AB2CA3164500BB0921 /* DependenciesMacros in Frameworks */,
 				09A754B52CA89BEB005DE5B9 /* ClementAdblockIOS.xcframework in Frameworks */,
 				0948C3C12CA354B300BB0921 /* FirebaseAppCheck in Frameworks */,
+				09700B182CAC4E31007B97BE /* DependenciesMacros in Frameworks */,
 				0948C3BF2CA354B300BB0921 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
+				09700B162CAC4E31007B97BE /* Dependencies in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -232,11 +251,10 @@
 			);
 			name = Clement;
 			packageProductDependencies = (
-				0948C3992CA21EAC00BB0921 /* Factory */,
-				0948C3A82CA3164500BB0921 /* Dependencies */,
-				0948C3AA2CA3164500BB0921 /* DependenciesMacros */,
 				0948C3BE2CA354B300BB0921 /* FirebaseAnalyticsWithoutAdIdSupport */,
 				0948C3C02CA354B300BB0921 /* FirebaseAppCheck */,
+				09700B152CAC4E31007B97BE /* Dependencies */,
+				09700B172CAC4E31007B97BE /* DependenciesMacros */,
 			);
 			productName = Clement;
 			productReference = 099FF8AB2CA1B61F009BAFA4 /* Clement.app */;
@@ -324,9 +342,8 @@
 			mainGroup = 099FF8A22CA1B61F009BAFA4;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				0948C3982CA21EAC00BB0921 /* XCRemoteSwiftPackageReference "Factory" */,
-				0948C3A72CA3164500BB0921 /* XCRemoteSwiftPackageReference "swift-dependencies" */,
 				0948C3BD2CA354B300BB0921 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				09700B142CAC4E31007B97BE /* XCRemoteSwiftPackageReference "swift-dependencies" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 099FF8AC2CA1B61F009BAFA4 /* Products */;
@@ -780,22 +797,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		0948C3982CA21EAC00BB0921 /* XCRemoteSwiftPackageReference "Factory" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/hmlongco/Factory.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.3.2;
-			};
-		};
-		0948C3A72CA3164500BB0921 /* XCRemoteSwiftPackageReference "swift-dependencies" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/pointfreeco/swift-dependencies";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.4.1;
-			};
-		};
 		0948C3BD2CA354B300BB0921 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -804,24 +805,17 @@
 				minimumVersion = 11.2.0;
 			};
 		};
+		09700B142CAC4E31007B97BE /* XCRemoteSwiftPackageReference "swift-dependencies" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-dependencies";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.4.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		0948C3992CA21EAC00BB0921 /* Factory */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 0948C3982CA21EAC00BB0921 /* XCRemoteSwiftPackageReference "Factory" */;
-			productName = Factory;
-		};
-		0948C3A82CA3164500BB0921 /* Dependencies */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 0948C3A72CA3164500BB0921 /* XCRemoteSwiftPackageReference "swift-dependencies" */;
-			productName = Dependencies;
-		};
-		0948C3AA2CA3164500BB0921 /* DependenciesMacros */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 0948C3A72CA3164500BB0921 /* XCRemoteSwiftPackageReference "swift-dependencies" */;
-			productName = DependenciesMacros;
-		};
 		0948C3BE2CA354B300BB0921 /* FirebaseAnalyticsWithoutAdIdSupport */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 0948C3BD2CA354B300BB0921 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
@@ -831,6 +825,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0948C3BD2CA354B300BB0921 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAppCheck;
+		};
+		09700B152CAC4E31007B97BE /* Dependencies */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 09700B142CAC4E31007B97BE /* XCRemoteSwiftPackageReference "swift-dependencies" */;
+			productName = Dependencies;
+		};
+		09700B172CAC4E31007B97BE /* DependenciesMacros */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 09700B142CAC4E31007B97BE /* XCRemoteSwiftPackageReference "swift-dependencies" */;
+			productName = DependenciesMacros;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

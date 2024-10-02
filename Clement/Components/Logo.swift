@@ -10,13 +10,14 @@ import SwiftUI
 struct Logo: View {
     var body: some View {
         HStack {
-            Image(.logo).resizable()
+            Image(.logo)
+                .resizable()
                 .scaledToFit()
-                .frame(width: 40)
-                .foregroundColor(.accent)
+                .frame(width: 32, height: 32)
+                .foregroundColor(.white)
             Text("Clement").font(.system(.largeTitle, design: .rounded))
                 .fontWeight(.heavy)
-                .foregroundStyle(.accent)
+                .foregroundStyle(.white)
         }
     }
 }

@@ -21,13 +21,13 @@ struct UpdateStatusView: View {
     func leadingView() -> some View {
         switch (status) {
         case .updated:
-            Image("ShieldCheck")
+            Image(systemName: "checkmark.shield.fill")
                 .resizable()
                 .scaledToFit()
-                .frame(height: 30)
-                .foregroundStyle(.accent)
+                .frame(width: 28)
+                .foregroundStyle(Color.green5)
         case .updating:
-            ProgressView().tint(.accent)
+            ProgressView().tint(Color.green5)
         }
     }
     
@@ -57,12 +57,12 @@ struct UpdateStatusView: View {
                 leadingView()
                 Text(statusText).font(.system(.title, design: .rounded))
                     .fontWeight(.heavy)
-                    .foregroundStyle(.accent)
+                    .foregroundStyle(.green5)
             }
             if let updatedText = lastUpdatedText {
-                Text("Last updated \(updatedText)").font(.system(.caption, design: .rounded))
+                Text("Last updated \(updatedText)").font(.system(.caption, design: .rounded)).foregroundStyle(.green5)
             }
-        }
+        }.frame(maxWidth: .infinity, minHeight: 150).cardBackground()
     }
 }
 

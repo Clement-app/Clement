@@ -8,33 +8,41 @@
 import Foundation
 import Dependencies
 
-protocol Downloader {
-    func availableItems() async throws -> [RuleList]
-    func downloadRules(ruleList: RuleList) async throws -> String?
+struct Downloader {
+    var availableItems: () async throws -> [RuleList]
+    var downloadRules: (_ ruleList: RuleList) async throws -> String?
 }
 
 struct AvailableItemsAPIResponse: Codable {
     var sources: [RuleList]
 }
 
-class LiveDownloader: Downloader {
-    func availableItems() async throws -> [RuleList] {
-        guard let url = URL(string: "https://api.clement.app/available") else {
-            throw URLError(.badURL)
-        }
-        let response: AvailableItemsAPIResponse = try await URLSession.shared.decode(from: url)
-        return response.sources
+extension Downloader: DependencyKey {
+    static var liveValue: Self {
+        return Self(availableItems: {
+            guard let url = URL(string: "https://api.clement.app/available") else {
+                throw URLError(.badURL)
+            }
+            let response: AvailableItemsAPIResponse = try await URLSession.shared.decode(from: url)
+            return response.sources
+        }, downloadRules: { (ruleList: RuleList) in
+            guard let url = URL(string: ruleList.url) else {
+                throw URLError(.badURL)
+            }
+            let (data, _) = try await URLSession.shared.data(from: url)
+            return String(bytes: data, encoding: .utf8)
+        })
     }
     
-    func downloadRules(ruleList: RuleList) async throws -> String? {
-        guard let url = URL(string: ruleList.url) else {
-            throw URLError(.badURL)
-        }
-        let (data, _) = try await URLSession.shared.data(from: url)
-        return String(bytes: data, encoding: .utf8)
-    }
+    static let testValue = Self(
+        availableItems: unimplemented("Downloader.availableItems"),
+        downloadRules: unimplemented("Downloader.downloadRules")
+    )
 }
 
-enum DownloaderKey: DependencyKey {
-    static let liveValue: any Downloader = LiveDownloader()
+extension DependencyValues {
+  var downloader: Downloader {
+    get { self[Downloader.self] }
+    set { self[Downloader.self] = newValue }
+  }
 }

@@ -15,10 +15,10 @@ struct SetupView: View {
                     Image(.logo).resizable()
                         .scaledToFit()
                         .frame(width: 40)
-                        .foregroundColor(.accent)
+                        .foregroundColor(.accentColor)
                     Text("Clement").font(.system(.largeTitle, design: .rounded))
                         .fontWeight(.heavy)
-                        .foregroundStyle(.accent)
+                        .foregroundStyle(Color.accentColor)
                 }
                 Text("Follow the steps below to enable the Clement content blocker extension.")
             }.padding(.bottom, 20)

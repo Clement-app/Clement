@@ -27,10 +27,7 @@ extension Home {
             isShowingSetupSheet = await !contentBlocker.isEnabled
         }
         
-        func refreshFilterLists() async {
-            guard coordinator.shouldUpdate() else {
-                return
-            }
+        private func refresh() async {
             status = .updating
             do {
                 try await coordinator.refreshAvailableRules(with: modelContainer)
@@ -38,6 +35,24 @@ extension Home {
             } catch {
                 print(error)
             }
+        }
+        
+        func refreshFilterLists(force: Bool = false) async {
+            if force {
+                await refresh()
+                return
+            }
+            guard coordinator.shouldUpdate() else {
+                return
+            }
+            await refresh()
+        }
+        
+        func handleTotalRulesChange(ruleCount: Int) {
+            guard ruleCount > Constants.maxRuleCount else {
+                return
+            }
+            print("Over maximum rule count")
         }
     }
 }
@@ -48,38 +63,55 @@ struct Home: View {
     
     @Environment(\.modelContext) private var modelContext
     
+    @AppStorage(UserDefaults.Keys.totalRules.rawValue) var totalRuleCount: Int = 0
+    
     var body: some View {
         NavigationStack {
-            VStack {
-                Logo()
-                Spacer()
-                UpdateStatusView(status: viewModel.status)
-                Spacer()
-                AsyncButton {
-                
-                } label: {
-                    Text("Check for updates")
-                        .frame(maxWidth: 300, maxHeight: 40)
-                }.buttonStyle(.bordered)
-                NavigationLink {
-                    SettingsView()
-                } label: {
-                    Text("Settings").frame(maxWidth: 300, maxHeight: 40)
-                }
+            BackgroundView {
+                VStack() {
+                    HStack {
+                        Logo()
+                        Spacer()
+                        Button {
+                            
+                        } label: {
+                            Image(systemName: "gear")
+                                .resizable()
+                                .frame(width: 28, height: 28)
+                        }
+                    }
+                    ScrollView {
+                        VStack(spacing: 14) {
+                            UpdateStatusView(status: viewModel.status)
+                            ToastView(style: .error, title: "Rule limit reached",message: "There are 196,000 rules enabled, this is over the 150,000 limit enforced by Apple.\n\nYou can disable filter lists in settings.")
+                            Form {
+                                Section {
+                                    Text("erer")
+                                    Text("erer")
+                                }
+                            }
+                            Spacer()
+                        }
+                    }
+                }.padding(28)
             }
-            .padding(20)
             .sheet(isPresented: $viewModel.isShowingSetupSheet) {
                 SetupView().interactiveDismissDisabled()
             }
-
+            
             .onChange(of: scenePhase) { oldPhase, newPhase in
                 if newPhase == .active {
                     Task {
                         await viewModel.ensureExtensionEnabled()
                     }
                 }
-            }.task {
-                await viewModel.refreshFilterLists()
+            }.onAppear() {
+                viewModel.handleTotalRulesChange(ruleCount: totalRuleCount)
+                Task {
+                    await viewModel.refreshFilterLists()
+                }
+            }.onChange(of: totalRuleCount) {
+                viewModel.handleTotalRulesChange(ruleCount: totalRuleCount)
             }
         }
     }

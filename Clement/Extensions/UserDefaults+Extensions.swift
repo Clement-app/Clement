@@ -11,6 +11,7 @@ extension UserDefaults {
     enum Keys: String, CaseIterable {
         case hasOnboarded
         case lastUpdated
+        case totalRules
     }
     
     func reset() {

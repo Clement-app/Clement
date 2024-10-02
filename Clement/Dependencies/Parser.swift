@@ -7,16 +7,25 @@
 
 import Dependencies
 
-protocol Parser {
-    func parseRuleList(ruleListText: String) -> String
+struct Parser {
+    var parseRuleList: (_ ruleListText: String) -> String
 }
 
-class LiveParser: Parser {
-    func parseRuleList(ruleListText: String) -> String {
-        return parseRules(rules: ruleListText)
+extension Parser: DependencyKey {
+    static var realParser: Self {
+        return Self(
+            parseRuleList: { ruleList in parseRules(rules: ruleList) }
+        )
     }
+    
+    static var liveValue = realParser
+    static var testValue = realParser
 }
 
-enum ParserKey: DependencyKey {
-    static let liveValue: any Parser = LiveParser()
+extension DependencyValues {
+  var parser: Parser {
+    get { self[Parser.self] }
+    set { self[Parser.self] = newValue }
+  }
 }
+
