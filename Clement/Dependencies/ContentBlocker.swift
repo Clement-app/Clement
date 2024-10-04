@@ -7,24 +7,62 @@
 
 import SafariServices
 import Dependencies
+import Shared
 
-protocol ContentBlockerProtocol {
-    var isEnabled: Bool { get async }
+struct ContentBlocker {
+    var isEnabled: (_ type: [RuleListType]) async -> Bool
+    var refreshExtension: (_ type: [RuleListType]) async throws -> Void
 }
 
-class LiveContentBlocker: ContentBlockerProtocol {
-    var isEnabled: Bool {
-        get async {
-            do {
-                let status = try await SFContentBlockerManager.stateOfContentBlocker(withIdentifier: "uk.co.catchpoledigital.Clement.SafariExtension")
-                return status.isEnabled
-            } catch {
-                return false
-            }
+extension ContentBlocker {
+    
+    static var coreIdentifier: String = "uk.co.catchpoledigital.Clement.SafariExtension"
+    static var privacyIdentifier: String = "uk.co.catchpoledigital.Clement.PrivacySafariExtension"
+    static var annoyanceIdentifier: String = "uk.co.catchpoledigital.Clement.AnnoyancesSafariExtension"
+    static var exclusionsIdentifier: String = "uk.co.catchpoledigital.Clement.ExclusionsSafariExtension"
+    
+    static func getBundleIdentifiers(for types: [RuleListType]) -> [String] {
+        return types.map { getBundleIdentifiers(for: $0) }.flatMap { $0 }
+    }
+    
+    static private func getBundleIdentifiers(for type: RuleListType) -> [String] {
+        switch type {
+        case .core:
+            return [coreIdentifier]
+        case .privacy:
+            return [privacyIdentifier]
+        case .annoyance:
+            return [annoyanceIdentifier]
+        case .exclusions:
+            return [exclusionsIdentifier]
         }
+    }
+    
+}
+
+extension ContentBlocker: DependencyKey {
+    static var liveValue: Self {
+        return Self(
+            isEnabled: { types in
+                do {
+                    let identifiers = ContentBlocker.getBundleIdentifiers(for: types)
+                    return try await identifiers.asyncMap { try await SFContentBlockerManager.stateOfContentBlocker(withIdentifier: $0).isEnabled }.allSatisfy({ $0 == true})
+                } catch {
+                    return false
+                }
+            },
+            refreshExtension: { types in
+                let identifiers = ContentBlocker.getBundleIdentifiers(for: types)
+                try await identifiers.asyncForEach { try await SFContentBlockerManager.reloadContentBlocker(withIdentifier: $0) }
+            }
+        )
     }
 }
 
-enum ContentBlockerKey: DependencyKey {
-    static let liveValue: any ContentBlockerProtocol = LiveContentBlocker()
+extension DependencyValues {
+  var contentBlocker: ContentBlocker {
+    get { self[ContentBlocker.self] }
+    set { self[ContentBlocker.self] = newValue }
+  }
 }
+

@@ -8,6 +8,7 @@
 import SwiftUI
 import Dependencies
 import Foundation
+import Shared
 
 extension OnboardingView {
     @Observable
@@ -15,13 +16,13 @@ extension OnboardingView {
         var isShowingSetupSheet: Bool = false
         
         @ObservationIgnored
-        @Dependency(ContentBlockerKey.self) var contentBlocker
+        @Dependency(\.contentBlocker) var contentBlocker
         
         @ObservationIgnored
         @Dependency(UserDefaultsKey.self) var userDefaults
         
         func toggleSetupSheet() async {
-            if await contentBlocker.isEnabled {
+            if await contentBlocker.isEnabled([.core, .privacy, .exclusions, .annoyance]) {
                 userDefaults.set(true, forKey: UserDefaults.Keys.hasOnboarded.rawValue)
             } else {
                 isShowingSetupSheet.toggle()
@@ -41,25 +42,27 @@ struct OnboardingView: View {
     @State var viewModel = ViewModel()
     
     var body: some View {
-        VStack(spacing: 20) {
-            Logo()
-            TabView {
-                ForEach(data) { item in
-                    OnboardingItemView(item: item)
+        BackgroundView {
+            VStack(spacing: 20) {
+                Logo()
+                TabView {
+                    ForEach(data) { item in
+                        OnboardingItemView(item: item)
+                    }
                 }
+                .tabViewStyle(PageTabViewStyle())
+                AsyncButton {
+                    await viewModel.toggleSetupSheet()
+                } label: {
+                    Text("Get Started")
+                        .frame(maxWidth: 300, maxHeight: 40)
+                }.buttonStyle(.borderedProminent).foregroundStyle(.green5)
             }
-            .tabViewStyle(PageTabViewStyle())
-            AsyncButton {
-                await viewModel.toggleSetupSheet()
-            } label: {
-                Text("Get Started")
-                    .frame(maxWidth: 300, maxHeight: 40)
-            }.buttonStyle(.borderedProminent)
+            .sheet(isPresented: $viewModel.isShowingSetupSheet) {
+                SetupView().presentationDetents([.medium]).presentationDragIndicator(.visible)
+            }
+            .padding(.vertical, 20)
         }
-        .sheet(isPresented: $viewModel.isShowingSetupSheet) {
-            SetupView().presentationDetents([.medium]).presentationDragIndicator(.visible)
-        }
-        .padding(.vertical, 20)
     }
 }
 

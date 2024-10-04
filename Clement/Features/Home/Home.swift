@@ -7,12 +7,13 @@
 
 import SwiftUI
 import Dependencies
+import SwiftData
 
 extension Home {
     @Observable
     class ViewModel {
         @ObservationIgnored
-        @Dependency(ContentBlockerKey.self) var contentBlocker
+        @Dependency(\.contentBlocker) var contentBlocker
         
         @ObservationIgnored
         @Dependency(ModelContainerKey.self) var modelContainer
@@ -21,16 +22,23 @@ extension Home {
         @Dependency(Coordinator.self) var coordinator
         
         var isShowingSetupSheet: Bool = false
+        var isShowingRuleViewer: Bool = false
         var status = UpdateStatus.updated
+        var selectedRule: RuleList?
         
         func ensureExtensionEnabled() async {
-            isShowingSetupSheet = await !contentBlocker.isEnabled
+            isShowingSetupSheet = await !contentBlocker.isEnabled([.core, .annoyance, .privacy, .exclusions])
+        }
+        
+        func showRuleViewer(ruleList: RuleList) {
+            selectedRule = ruleList
+            isShowingRuleViewer = true
         }
         
         private func refresh() async {
             status = .updating
             do {
-                try await coordinator.refreshAvailableRules(with: modelContainer)
+                try await coordinator.refreshAvailableRules()
                 status = .updated
             } catch {
                 print(error)
@@ -59,11 +67,8 @@ extension Home {
 
 struct Home: View {
     @Environment(\.scenePhase) var scenePhase
+    
     @State var viewModel = ViewModel()
-    
-    @Environment(\.modelContext) private var modelContext
-    
-    @AppStorage(UserDefaults.Keys.totalRules.rawValue) var totalRuleCount: Int = 0
     
     var body: some View {
         NavigationStack {
@@ -72,33 +77,35 @@ struct Home: View {
                     HStack {
                         Logo()
                         Spacer()
-                        Button {
-                            
+                        NavigationLink {
+                            SettingsView()
                         } label: {
                             Image(systemName: "gear")
                                 .resizable()
                                 .frame(width: 28, height: 28)
                         }
                     }
+                    .padding([.top, .leading, .trailing], 28)
                     ScrollView {
                         VStack(spacing: 14) {
                             UpdateStatusView(status: viewModel.status)
-                            ToastView(style: .error, title: "Rule limit reached",message: "There are 196,000 rules enabled, this is over the 150,000 limit enforced by Apple.\n\nYou can disable filter lists in settings.")
-                            Form {
-                                Section {
-                                    Text("erer")
-                                    Text("erer")
-                                }
-                            }
-                            Spacer()
+                            AsyncButton {
+                                await viewModel.refreshFilterLists(force: true)
+                            } label: {
+                                Text("Check for updates").foregroundStyle(Color.green5).frame(maxWidth: .infinity, minHeight: 40)
+                            }.buttonStyle(.borderedProminent).tint(.accent)
+                            RuleListCount()
+                            FilterRulesList(showRuleViewer: viewModel.showRuleViewer)
                         }
                     }
-                }.padding(28)
+                }.contentMargins([.bottom, .leading, .trailing], 28, for: .scrollContent)
             }
             .sheet(isPresented: $viewModel.isShowingSetupSheet) {
                 SetupView().interactiveDismissDisabled()
             }
-            
+            .sheet(isPresented: $viewModel.isShowingRuleViewer) {
+                RuleViewer(ruleList: viewModel.selectedRule)
+            }
             .onChange(of: scenePhase) { oldPhase, newPhase in
                 if newPhase == .active {
                     Task {
@@ -106,12 +113,9 @@ struct Home: View {
                     }
                 }
             }.onAppear() {
-                viewModel.handleTotalRulesChange(ruleCount: totalRuleCount)
                 Task {
                     await viewModel.refreshFilterLists()
                 }
-            }.onChange(of: totalRuleCount) {
-                viewModel.handleTotalRulesChange(ruleCount: totalRuleCount)
             }
         }
     }

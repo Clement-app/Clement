@@ -10,10 +10,12 @@ import SwiftUI
 struct BackgroundView<Content: View>: View {
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
     @ViewBuilder var content: () -> Content
+    
+    var color: Color = Color.green5
 
     var body: some View {
         ZStack {
-            Color.green5.ignoresSafeArea()
+            color.ignoresSafeArea()
             content()
         }
     }

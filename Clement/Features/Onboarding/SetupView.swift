@@ -28,7 +28,7 @@ struct SetupView: View {
                       Circle()
                             .fill(.accent)
                       
-                        Text("1").fontWeight(.heavy)
+                        Text("1").fontWeight(.heavy).foregroundStyle(.green5)
                     }
                     .frame(width: 25, height: 25)
                     Text("Open the Settings app")
@@ -38,7 +38,7 @@ struct SetupView: View {
                       Circle()
                             .fill(.accent)
                       
-                        Text("2").fontWeight(.heavy)
+                        Text("2").fontWeight(.heavy).foregroundStyle(.green5)
                     }
                     .frame(width: 25, height: 25)
                     Text("Tap Safari")
@@ -48,7 +48,7 @@ struct SetupView: View {
                       Circle()
                             .fill(.accent)
                       
-                        Text("3").fontWeight(.heavy)
+                        Text("3").fontWeight(.heavy).foregroundStyle(.green5)
                     }
                     .frame(width: 25, height: 25)
                     Text("Tap Extensions")
@@ -58,17 +58,17 @@ struct SetupView: View {
                       Circle()
                             .fill(.accent)
                       
-                        Text("4").fontWeight(.heavy)
+                        Text("4").fontWeight(.heavy).foregroundStyle(.green5)
                     }
                     .frame(width: 25, height: 25)
-                    Text("Enable the Clement extension")
+                    Text("Enable all the Clement extensions")
                 }
                 HStack {
                     ZStack {
                       Circle()
                             .fill(.accent)
                       
-                        Text("4").fontWeight(.heavy)
+                        Text("4").fontWeight(.heavy).foregroundStyle(.green5)
                     }
                     .frame(width: 25, height: 25)
                     Text("Return to the Clement app")

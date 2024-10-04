@@ -6,12 +6,29 @@
 //
 
 import Foundation
+import Shared
 
 extension UserDefaults {
     enum Keys: String, CaseIterable {
         case hasOnboarded
         case lastUpdated
-        case totalRules
+        case coreTotalRules
+        case privacyTotalRules
+        case annoyanceTotalRules
+        case exclusionTotalRules
+    }
+    
+    func keyForType(type: RuleListType) -> String {
+        switch(type) {
+        case .annoyance:
+            return Keys.annoyanceTotalRules.rawValue
+        case .core:
+            return Keys.coreTotalRules.rawValue
+        case .privacy:
+            return Keys.privacyTotalRules.rawValue
+        case .exclusions:
+            return Keys.exclusionTotalRules.rawValue
+        }
     }
     
     func reset() {

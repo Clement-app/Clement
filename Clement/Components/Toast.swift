@@ -63,7 +63,7 @@ struct ToastView: View {
         .frame(minWidth: 0, maxWidth: width)
         .cornerRadius(12)
         .background(
-            RoundedRectangle(cornerRadius: 12, style: .continuous).fill(.white)
+            RoundedRectangle(cornerRadius: 12, style: .continuous).fill(.chalk)
         )
     }
 }

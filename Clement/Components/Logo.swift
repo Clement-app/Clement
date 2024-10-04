@@ -14,10 +14,10 @@ struct Logo: View {
                 .resizable()
                 .scaledToFit()
                 .frame(width: 32, height: 32)
-                .foregroundColor(.white)
+                .foregroundColor(.chalk)
             Text("Clement").font(.system(.largeTitle, design: .rounded))
                 .fontWeight(.heavy)
-                .foregroundStyle(.white)
+                .foregroundStyle(.chalk)
         }
     }
 }

@@ -12,6 +12,7 @@ import Dependencies
 struct FileIO {
     var writeString: (_ fileName: String, _ text: String) throws -> Void
     var getString: (_ fileName: String) throws -> String
+    var delete: (_ fileName: String) -> Void
 }
 
 extension FileIO: DependencyKey {
@@ -19,10 +20,13 @@ extension FileIO: DependencyKey {
         @Dependency(FileManagerKey.self) var fileManager
         return Self(
             writeString: { fileName, text in
-                try text.write(to: fileManager.getDocumentsDirectory().appendingPathComponent(fileName), atomically: true, encoding: .utf8)
+                try text.write(to: fileManager.getSharedDirectory().appendingPathComponent(fileName), atomically: true, encoding: .utf8)
             },
             getString: { fileName in
-                return try String(contentsOf: fileManager.getDocumentsDirectory().appendingPathComponent(fileName), encoding: .utf8)
+                return try String(contentsOf: fileManager.getSharedDirectory().appendingPathComponent(fileName), encoding: .utf8)
+            },
+            delete: { fileName in
+                try? fileManager.removeItem(at: fileManager.getSharedDirectory().appendingPathComponent(fileName))
             }
         )
     }

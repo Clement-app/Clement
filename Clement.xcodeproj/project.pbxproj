@@ -16,6 +16,14 @@
 		0948C3C12CA354B300BB0921 /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 0948C3C02CA354B300BB0921 /* FirebaseAppCheck */; };
 		09700B162CAC4E31007B97BE /* Dependencies in Frameworks */ = {isa = PBXBuildFile; productRef = 09700B152CAC4E31007B97BE /* Dependencies */; };
 		09700B182CAC4E31007B97BE /* DependenciesMacros in Frameworks */ = {isa = PBXBuildFile; productRef = 09700B172CAC4E31007B97BE /* DependenciesMacros */; };
+		09700BC22CAEF151007B97BE /* PrivacySafariExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 09700BB92CAEF151007B97BE /* PrivacySafariExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		09700BD42CAEF1EB007B97BE /* AnnoyancesSafariExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 09700BCB2CAEF1EB007B97BE /* AnnoyancesSafariExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		09700BE62CAEF25D007B97BE /* ExclusionsSafariExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 09700BDD2CAEF25D007B97BE /* ExclusionsSafariExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		09700C0F2CAF1829007B97BE /* libShared.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 09700C022CAF17B6007B97BE /* libShared.a */; };
+		09700C102CAF1830007B97BE /* libShared.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 09700C022CAF17B6007B97BE /* libShared.a */; };
+		09700C112CAF1834007B97BE /* libShared.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 09700C022CAF17B6007B97BE /* libShared.a */; };
+		09700C122CAF1838007B97BE /* libShared.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 09700C022CAF17B6007B97BE /* libShared.a */; };
+		09700C132CAF183D007B97BE /* libShared.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 09700C022CAF17B6007B97BE /* libShared.a */; };
 		09A754B52CA89BEB005DE5B9 /* ClementAdblockIOS.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09A754B42CA89BE3005DE5B9 /* ClementAdblockIOS.xcframework */; };
 		09A754B62CA89BEB005DE5B9 /* ClementAdblockIOS.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 09A754B42CA89BE3005DE5B9 /* ClementAdblockIOS.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
@@ -27,6 +35,27 @@
 			proxyType = 1;
 			remoteGlobalIDString = 0948C3712CA1F6B900BB0921;
 			remoteInfo = SafariExtension;
+		};
+		09700BC02CAEF151007B97BE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 099FF8A32CA1B61F009BAFA4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 09700BB82CAEF151007B97BE;
+			remoteInfo = PrivacySafariExtension;
+		};
+		09700BD22CAEF1EB007B97BE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 099FF8A32CA1B61F009BAFA4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 09700BCA2CAEF1EB007B97BE;
+			remoteInfo = AnnoyancesSafariExtension;
+		};
+		09700BE42CAEF25D007B97BE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 099FF8A32CA1B61F009BAFA4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 09700BDC2CAEF25D007B97BE;
+			remoteInfo = ExclusionsSafariExtension;
 		};
 		099FF8BE2CA1B621009BAFA4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -52,8 +81,20 @@
 			dstSubfolderSpec = 13;
 			files = (
 				0948C37B2CA1F6BA00BB0921 /* SafariExtension.appex in Embed Foundation Extensions */,
+				09700BD42CAEF1EB007B97BE /* AnnoyancesSafariExtension.appex in Embed Foundation Extensions */,
+				09700BC22CAEF151007B97BE /* PrivacySafariExtension.appex in Embed Foundation Extensions */,
+				09700BE62CAEF25D007B97BE /* ExclusionsSafariExtension.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		09700C002CAF17B6007B97BE /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		09A754B72CA89BEB005DE5B9 /* Embed Frameworks */ = {
@@ -72,6 +113,10 @@
 /* Begin PBXFileReference section */
 		0948C3722CA1F6B900BB0921 /* SafariExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SafariExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		0948C3B82CA3543C00BB0921 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		09700BB92CAEF151007B97BE /* PrivacySafariExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PrivacySafariExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		09700BCB2CAEF1EB007B97BE /* AnnoyancesSafariExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = AnnoyancesSafariExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		09700BDD2CAEF25D007B97BE /* ExclusionsSafariExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ExclusionsSafariExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		09700C022CAF17B6007B97BE /* libShared.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libShared.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		099FF8AB2CA1B61F009BAFA4 /* Clement.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clement.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		099FF8BD2CA1B621009BAFA4 /* ClementTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClementTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		099FF8C72CA1B621009BAFA4 /* ClementUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClementUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -87,6 +132,27 @@
 			);
 			target = 0948C3712CA1F6B900BB0921 /* SafariExtension */;
 		};
+		09700BC62CAEF151007B97BE /* Exceptions for "PrivacySafariExtension" folder in "PrivacySafariExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 09700BB82CAEF151007B97BE /* PrivacySafariExtension */;
+		};
+		09700BD82CAEF1EB007B97BE /* Exceptions for "AnnoyancesSafariExtension" folder in "AnnoyancesSafariExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 09700BCA2CAEF1EB007B97BE /* AnnoyancesSafariExtension */;
+		};
+		09700BEA2CAEF25D007B97BE /* Exceptions for "ExclusionsSafariExtension" folder in "ExclusionsSafariExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 09700BDC2CAEF25D007B97BE /* ExclusionsSafariExtension */;
+		};
 		09BBCC432CAC06F500C986D9 /* Exceptions for "Clement" folder in "ClementTests" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -95,10 +161,12 @@
 				Dependencies/Downloader.swift,
 				Dependencies/FileIO.swift,
 				Dependencies/FileManager.swift,
+				Dependencies/Generator.swift,
 				Dependencies/Parser.swift,
 				Dependencies/UserDefaults.swift,
 				"Extensions/Date+Extensions.swift",
 				"Extensions/FileManager+Extensions.swift",
+				"Extensions/Sequence+Extensions.swift",
 				"Extensions/URLSession+Extensions.swift",
 				"Extensions/UserDefaults+Extensions.swift",
 				Model/RuleList.swift,
@@ -114,6 +182,35 @@
 				0948C37C2CA1F6BA00BB0921 /* Exceptions for "SafariExtension" folder in "SafariExtension" target */,
 			);
 			path = SafariExtension;
+			sourceTree = "<group>";
+		};
+		09700BBA2CAEF151007B97BE /* PrivacySafariExtension */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				09700BC62CAEF151007B97BE /* Exceptions for "PrivacySafariExtension" folder in "PrivacySafariExtension" target */,
+			);
+			path = PrivacySafariExtension;
+			sourceTree = "<group>";
+		};
+		09700BCC2CAEF1EB007B97BE /* AnnoyancesSafariExtension */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				09700BD82CAEF1EB007B97BE /* Exceptions for "AnnoyancesSafariExtension" folder in "AnnoyancesSafariExtension" target */,
+			);
+			path = AnnoyancesSafariExtension;
+			sourceTree = "<group>";
+		};
+		09700BDE2CAEF25D007B97BE /* ExclusionsSafariExtension */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				09700BEA2CAEF25D007B97BE /* Exceptions for "ExclusionsSafariExtension" folder in "ExclusionsSafariExtension" target */,
+			);
+			path = ExclusionsSafariExtension;
+			sourceTree = "<group>";
+		};
+		09700C032CAF17B6007B97BE /* Shared */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Shared;
 			sourceTree = "<group>";
 		};
 		099FF8AD2CA1B61F009BAFA4 /* Clement */ = {
@@ -141,6 +238,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09700C102CAF1830007B97BE /* libShared.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		09700BB62CAEF151007B97BE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				09700C112CAF1834007B97BE /* libShared.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		09700BC82CAEF1EB007B97BE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				09700C122CAF1838007B97BE /* libShared.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		09700BDA2CAEF25D007B97BE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				09700C132CAF183D007B97BE /* libShared.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		09700BFF2CAF17B6007B97BE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -148,6 +277,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09700C0F2CAF1829007B97BE /* libShared.a in Frameworks */,
 				09A754B52CA89BEB005DE5B9 /* ClementAdblockIOS.xcframework in Frameworks */,
 				0948C3C12CA354B300BB0921 /* FirebaseAppCheck in Frameworks */,
 				09700B182CAC4E31007B97BE /* DependenciesMacros in Frameworks */,
@@ -173,14 +303,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		09700BA22CAEF0BB007B97BE /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0948C3732CA1F6BA00BB0921 /* SafariExtension */,
+				09700BDE2CAEF25D007B97BE /* ExclusionsSafariExtension */,
+				09700BCC2CAEF1EB007B97BE /* AnnoyancesSafariExtension */,
+				09700BBA2CAEF151007B97BE /* PrivacySafariExtension */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		099FF8A22CA1B61F009BAFA4 = {
 			isa = PBXGroup;
 			children = (
+				09700BA22CAEF0BB007B97BE /* Extensions */,
 				09A755742CAB716B005DE5B9 /* Clement.xctestplan */,
 				099FF8AD2CA1B61F009BAFA4 /* Clement */,
 				099FF8C02CA1B621009BAFA4 /* ClementTests */,
 				099FF8CA2CA1B621009BAFA4 /* ClementUITests */,
-				0948C3732CA1F6BA00BB0921 /* SafariExtension */,
+				09700C032CAF17B6007B97BE /* Shared */,
 				099FF8AC2CA1B61F009BAFA4 /* Products */,
 				0948C3B82CA3543C00BB0921 /* GoogleService-Info.plist */,
 				09A754A12CA88982005DE5B9 /* Frameworks */,
@@ -194,6 +336,10 @@
 				099FF8BD2CA1B621009BAFA4 /* ClementTests.xctest */,
 				099FF8C72CA1B621009BAFA4 /* ClementUITests.xctest */,
 				0948C3722CA1F6B900BB0921 /* SafariExtension.appex */,
+				09700BB92CAEF151007B97BE /* PrivacySafariExtension.appex */,
+				09700BCB2CAEF1EB007B97BE /* AnnoyancesSafariExtension.appex */,
+				09700BDD2CAEF25D007B97BE /* ExclusionsSafariExtension.appex */,
+				09700C022CAF17B6007B97BE /* libShared.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -231,6 +377,94 @@
 			productReference = 0948C3722CA1F6B900BB0921 /* SafariExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
+		09700BB82CAEF151007B97BE /* PrivacySafariExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 09700BC32CAEF151007B97BE /* Build configuration list for PBXNativeTarget "PrivacySafariExtension" */;
+			buildPhases = (
+				09700BB52CAEF151007B97BE /* Sources */,
+				09700BB62CAEF151007B97BE /* Frameworks */,
+				09700BB72CAEF151007B97BE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				09700BBA2CAEF151007B97BE /* PrivacySafariExtension */,
+			);
+			name = PrivacySafariExtension;
+			packageProductDependencies = (
+			);
+			productName = PrivacySafariExtension;
+			productReference = 09700BB92CAEF151007B97BE /* PrivacySafariExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		09700BCA2CAEF1EB007B97BE /* AnnoyancesSafariExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 09700BD52CAEF1EB007B97BE /* Build configuration list for PBXNativeTarget "AnnoyancesSafariExtension" */;
+			buildPhases = (
+				09700BC72CAEF1EB007B97BE /* Sources */,
+				09700BC82CAEF1EB007B97BE /* Frameworks */,
+				09700BC92CAEF1EB007B97BE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				09700BCC2CAEF1EB007B97BE /* AnnoyancesSafariExtension */,
+			);
+			name = AnnoyancesSafariExtension;
+			packageProductDependencies = (
+			);
+			productName = AnnoyancesSafariExtension;
+			productReference = 09700BCB2CAEF1EB007B97BE /* AnnoyancesSafariExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		09700BDC2CAEF25D007B97BE /* ExclusionsSafariExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 09700BE72CAEF25D007B97BE /* Build configuration list for PBXNativeTarget "ExclusionsSafariExtension" */;
+			buildPhases = (
+				09700BD92CAEF25D007B97BE /* Sources */,
+				09700BDA2CAEF25D007B97BE /* Frameworks */,
+				09700BDB2CAEF25D007B97BE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				09700BDE2CAEF25D007B97BE /* ExclusionsSafariExtension */,
+			);
+			name = ExclusionsSafariExtension;
+			packageProductDependencies = (
+			);
+			productName = ExclusionsSafariExtension;
+			productReference = 09700BDD2CAEF25D007B97BE /* ExclusionsSafariExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		09700C012CAF17B6007B97BE /* Shared */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 09700C062CAF17B6007B97BE /* Build configuration list for PBXNativeTarget "Shared" */;
+			buildPhases = (
+				09700BFE2CAF17B6007B97BE /* Sources */,
+				09700BFF2CAF17B6007B97BE /* Frameworks */,
+				09700C002CAF17B6007B97BE /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				09700C032CAF17B6007B97BE /* Shared */,
+			);
+			name = Shared;
+			packageProductDependencies = (
+			);
+			productName = Shared;
+			productReference = 09700C022CAF17B6007B97BE /* libShared.a */;
+			productType = "com.apple.product-type.library.static";
+		};
 		099FF8AA2CA1B61F009BAFA4 /* Clement */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 099FF8D12CA1B621009BAFA4 /* Build configuration list for PBXNativeTarget "Clement" */;
@@ -245,6 +479,9 @@
 			);
 			dependencies = (
 				0948C37A2CA1F6BA00BB0921 /* PBXTargetDependency */,
+				09700BC12CAEF151007B97BE /* PBXTargetDependency */,
+				09700BD32CAEF1EB007B97BE /* PBXTargetDependency */,
+				09700BE52CAEF25D007B97BE /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				099FF8AD2CA1B61F009BAFA4 /* Clement */,
@@ -319,6 +556,18 @@
 					0948C3712CA1F6B900BB0921 = {
 						CreatedOnToolsVersion = 16.0;
 					};
+					09700BB82CAEF151007B97BE = {
+						CreatedOnToolsVersion = 16.0;
+					};
+					09700BCA2CAEF1EB007B97BE = {
+						CreatedOnToolsVersion = 16.0;
+					};
+					09700BDC2CAEF25D007B97BE = {
+						CreatedOnToolsVersion = 16.0;
+					};
+					09700C012CAF17B6007B97BE = {
+						CreatedOnToolsVersion = 16.0;
+					};
 					099FF8AA2CA1B61F009BAFA4 = {
 						CreatedOnToolsVersion = 16.0;
 					};
@@ -354,6 +603,10 @@
 				099FF8BC2CA1B621009BAFA4 /* ClementTests */,
 				099FF8C62CA1B621009BAFA4 /* ClementUITests */,
 				0948C3712CA1F6B900BB0921 /* SafariExtension */,
+				09700BB82CAEF151007B97BE /* PrivacySafariExtension */,
+				09700BCA2CAEF1EB007B97BE /* AnnoyancesSafariExtension */,
+				09700BDC2CAEF25D007B97BE /* ExclusionsSafariExtension */,
+				09700C012CAF17B6007B97BE /* Shared */,
 			);
 		};
 /* End PBXProject section */
@@ -364,6 +617,27 @@
 			buildActionMask = 2147483647;
 			files = (
 				0948C3BB2CA3543C00BB0921 /* GoogleService-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		09700BB72CAEF151007B97BE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		09700BC92CAEF1EB007B97BE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		09700BDB2CAEF25D007B97BE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -401,6 +675,34 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		09700BB52CAEF151007B97BE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		09700BC72CAEF1EB007B97BE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		09700BD92CAEF25D007B97BE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		09700BFE2CAF17B6007B97BE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		099FF8A72CA1B61F009BAFA4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -430,6 +732,21 @@
 			target = 0948C3712CA1F6B900BB0921 /* SafariExtension */;
 			targetProxy = 0948C3792CA1F6BA00BB0921 /* PBXContainerItemProxy */;
 		};
+		09700BC12CAEF151007B97BE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 09700BB82CAEF151007B97BE /* PrivacySafariExtension */;
+			targetProxy = 09700BC02CAEF151007B97BE /* PBXContainerItemProxy */;
+		};
+		09700BD32CAEF1EB007B97BE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 09700BCA2CAEF1EB007B97BE /* AnnoyancesSafariExtension */;
+			targetProxy = 09700BD22CAEF1EB007B97BE /* PBXContainerItemProxy */;
+		};
+		09700BE52CAEF25D007B97BE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 09700BDC2CAEF25D007B97BE /* ExclusionsSafariExtension */;
+			targetProxy = 09700BE42CAEF25D007B97BE /* PBXContainerItemProxy */;
+		};
 		099FF8BF2CA1B621009BAFA4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 099FF8AA2CA1B61F009BAFA4 /* Clement */;
@@ -447,12 +764,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CODE_SIGN_ENTITLEMENTS = Extensions/SafariExtension/SafariExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = CY3VNN37JN;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = SafariExtension/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = SafariExtension;
+				INFOPLIST_FILE = Extensions/SafariExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Core;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -473,12 +791,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CODE_SIGN_ENTITLEMENTS = Extensions/SafariExtension/SafariExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = CY3VNN37JN;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = SafariExtension/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = SafariExtension;
+				INFOPLIST_FILE = Extensions/SafariExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Core;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -490,6 +809,196 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		09700BC42CAEF151007B97BE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CODE_SIGN_ENTITLEMENTS = Extensions/PrivacySafariExtension/PrivacySafariExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = CY3VNN37JN;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Extensions/PrivacySafariExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Privacy;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = uk.co.catchpoledigital.Clement.PrivacySafariExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		09700BC52CAEF151007B97BE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CODE_SIGN_ENTITLEMENTS = Extensions/PrivacySafariExtension/PrivacySafariExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = CY3VNN37JN;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Extensions/PrivacySafariExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Privacy;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = uk.co.catchpoledigital.Clement.PrivacySafariExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		09700BD62CAEF1EB007B97BE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CODE_SIGN_ENTITLEMENTS = Extensions/AnnoyancesSafariExtension/AnnoyancesSafariExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = CY3VNN37JN;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Extensions/AnnoyancesSafariExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Annoyances;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = uk.co.catchpoledigital.Clement.AnnoyancesSafariExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		09700BD72CAEF1EB007B97BE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CODE_SIGN_ENTITLEMENTS = Extensions/AnnoyancesSafariExtension/AnnoyancesSafariExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = CY3VNN37JN;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Extensions/AnnoyancesSafariExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Annoyances;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = uk.co.catchpoledigital.Clement.AnnoyancesSafariExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		09700BE82CAEF25D007B97BE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CODE_SIGN_ENTITLEMENTS = Extensions/ExclusionsSafariExtension/ExclusionsSafariExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = CY3VNN37JN;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Extensions/ExclusionsSafariExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Exclusions;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = uk.co.catchpoledigital.Clement.ExclusionsSafariExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		09700BE92CAEF25D007B97BE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CODE_SIGN_ENTITLEMENTS = Extensions/ExclusionsSafariExtension/ExclusionsSafariExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = CY3VNN37JN;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Extensions/ExclusionsSafariExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Exclusions;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = uk.co.catchpoledigital.Clement.ExclusionsSafariExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		09700C072CAF17B6007B97BE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CY3VNN37JN;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		09700C082CAF17B6007B97BE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CY3VNN37JN;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -619,6 +1128,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Clement/Clement.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Clement/Preview Content\"";
@@ -649,6 +1159,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Clement/Clement.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Clement/Preview Content\"";
@@ -754,6 +1265,42 @@
 			buildConfigurations = (
 				0948C37E2CA1F6BA00BB0921 /* Debug */,
 				0948C37F2CA1F6BA00BB0921 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		09700BC32CAEF151007B97BE /* Build configuration list for PBXNativeTarget "PrivacySafariExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				09700BC42CAEF151007B97BE /* Debug */,
+				09700BC52CAEF151007B97BE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		09700BD52CAEF1EB007B97BE /* Build configuration list for PBXNativeTarget "AnnoyancesSafariExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				09700BD62CAEF1EB007B97BE /* Debug */,
+				09700BD72CAEF1EB007B97BE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		09700BE72CAEF25D007B97BE /* Build configuration list for PBXNativeTarget "ExclusionsSafariExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				09700BE82CAEF25D007B97BE /* Debug */,
+				09700BE92CAEF25D007B97BE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		09700C062CAF17B6007B97BE /* Build configuration list for PBXNativeTarget "Shared" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				09700C072CAF17B6007B97BE /* Debug */,
+				09700C082CAF17B6007B97BE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

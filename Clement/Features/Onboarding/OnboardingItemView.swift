@@ -22,7 +22,7 @@ struct OnboardingItemView: View {
                     .foregroundStyle(.accent)
                   // FRUIT: TITLE
                   Text(item.title)
-                      .foregroundColor(Color.white)
+                      .foregroundStyle(.chalk)
                       .font(.largeTitle)
                       .fontWeight(.heavy)
                       .multilineTextAlignment(.center)
@@ -31,7 +31,7 @@ struct OnboardingItemView: View {
             
             // FRUIT: HEADLINE
             Text(item.headline)
-              .foregroundColor(Color.white)
+                  .foregroundColor(.chalk)
               .multilineTextAlignment(.center)
               .padding(.horizontal, 16)
               .frame(maxWidth: 480)

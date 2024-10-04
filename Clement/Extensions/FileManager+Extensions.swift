@@ -12,4 +12,8 @@ extension FileManager {
         let paths = urls(for: .documentDirectory, in: .userDomainMask)
         return paths[0]
     }
+    
+    func getSharedDirectory() -> URL {
+        return containerURL(forSecurityApplicationGroupIdentifier: "group.uk.co.catchpoledigital.Clement")!
+    }
 }

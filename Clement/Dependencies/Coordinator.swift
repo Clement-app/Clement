@@ -8,10 +8,11 @@
 import Foundation
 import Dependencies
 import SwiftData
+import Shared
 
 protocol CoordinatorProtocol {
-    func applyEnabledRuleLists(with container: ModelContainer) async throws
-    func refreshAvailableRules(with container: ModelContainer) async throws
+    func applyEnabledRuleLists() async throws
+    func refreshAvailableRules() async throws
     func shouldUpdate() -> Bool
 }
 
@@ -23,16 +24,19 @@ class Coordinator: CoordinatorProtocol {
     
     @Dependency(\.fileIO) var fileIO
     @Dependency(UserDefaultsKey.self) var userDefaults
+    @Dependency(\.generator) var generator
+    @Dependency(\.contentBlocker) var contentBlocker
     @Dependency(\.downloader) var downloader
-    @Dependency(\.parser) var parser
     @Dependency(\.date.now) var now
+    @Dependency(ModelContainerKey.self) var modelContainer
     
-    func refreshAvailableRules(with container: ModelContainer) async throws {
+    func refreshAvailableRules() async throws {
         var availableRules: [RuleList]
         
         do {
             availableRules = try await downloader.availableItems()
         } catch {
+            print("can't fetch available items")
             throw CoordinatorError.downloadFailed
         }
         
@@ -48,13 +52,19 @@ class Coordinator: CoordinatorProtocol {
             }
         }
         
-        let localContext = ModelContext(container)
+        let localContext = ModelContext(modelContainer)
         for rule in availableRules {
-            localContext.insert(rule)
+            if let existingRule = try localContext.fetch(FetchDescriptor<RuleList>(predicate: #Predicate { $0.key == rule.key })).first {
+                existingRule.name = rule.name
+                existingRule.url = rule.url
+                existingRule.type = rule.type
+            } else {
+                localContext.insert(rule)
+            }
         }
         try localContext.save()
         
-        try applyEnabledRuleLists(with: container)
+        try await applyEnabledRuleLists()
         userDefaults.set(now.rawValue, forKey: UserDefaults.Keys.lastUpdated.rawValue)
     }
     
@@ -71,32 +81,43 @@ class Coordinator: CoordinatorProtocol {
         return elapsed > timeToLive
     }
     
-    func printTimeElapsedWhenRunningCode(title:String, operation:()->()) {
-        let startTime = CFAbsoluteTimeGetCurrent()
-        operation()
-        let timeElapsed = CFAbsoluteTimeGetCurrent() - startTime
-        print("Time elapsed for \(title): \(timeElapsed) s.")
-    }
-    
     /**
-     Create our content blocker JSON from our enabled filter lists
+     Create our content blocker JSONs from our enabled filter lists
      */
-    func applyEnabledRuleLists(with container: ModelContainer) throws {
-        let fetchDescriptor = FetchDescriptor<RuleList>(predicate: #Predicate { $0.enabled == true })
+    func applyEnabledRuleLists() async throws {
+        let fetchDescriptor = FetchDescriptor<RuleList>()
         
-        let localContext = ModelContext(container)
+        let localContext = ModelContext(modelContainer)
         let rules = try localContext.fetch(fetchDescriptor)
-        let combinedText = try rules.reduce("") {
-            $0 + "\n" + (try fileIO.getString("\($1.key).txt"))
-        }
         
-        let parsedBlockerJSON = parser.parseRuleList(combinedText)
-        try fileIO.writeString("blocklist.json", parsedBlockerJSON)
+        let groupedByType = Dictionary(grouping: rules, by: \.type)
         
-        guard let jsonCount = (try JSONSerialization.jsonObject(with: parsedBlockerJSON.data(using: .utf8)!) as? Array<Any>)?.count else {
-            return
+        let keys = groupedByType.keys.sorted()
+        try await keys.asyncForEach { key in
+            guard let rules = (groupedByType[key])?.filter({ rule in rule.enabled }) else {
+                print("rules don't exist for key: \(key)")
+                return
+            }
+            
+            guard let typeEnum = RuleListType(rawValue: key) else {
+                print("invalid enum")
+                return
+            }
+            
+            let fileName = "\(typeEnum.rawValue).json"
+
+            guard !rules.isEmpty else {
+                // Delete content blocker if we had one
+                fileIO.delete(fileName)
+                userDefaults.set(0, forKey: userDefaults.keyForType(type: typeEnum))
+                return
+            }
+            
+            let (json, count) = try generator.generateContentBlockerJSON(rules)
+            userDefaults.set(count, forKey: userDefaults.keyForType(type: typeEnum))
+            try fileIO.writeString(fileName, json)
         }
-        userDefaults.set(jsonCount, forKey: UserDefaults.Keys.totalRules.rawValue)
+        try await contentBlocker.refreshExtension([.core, .annoyance, .privacy])
     }
 }
 

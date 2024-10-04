@@ -26,15 +26,18 @@ struct DebugView: View {
     @State var viewModel = ViewModel()
     
     var body: some View {
-        Form {
-            Section {
-                Button {
-                    viewModel.resetUserDefaults()
-                } label: {
-                    Text("Reset UserDefaults")
+        BackgroundView {
+            Form {
+                Section {
+                    Button {
+                        viewModel.resetUserDefaults()
+                    } label: {
+                        Text("Reset UserDefaults").foregroundStyle(.green5)
+                    }.listRowBackground(Color.chalk)
                 }
             }
-        }.navigationTitle("Debug")
+            .scrollContentBackground(.hidden)
+        }.navigationTitle("Debug Settings")
     }
 }
 

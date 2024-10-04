@@ -7,6 +7,7 @@
 
 enum SettingDestination {
     case DebugSettings
+    case filterLists
 }
 
 struct SettingGroup: Identifiable {
