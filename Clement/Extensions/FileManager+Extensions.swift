@@ -14,6 +14,6 @@ extension FileManager {
     }
     
     func getSharedDirectory() -> URL {
-        return containerURL(forSecurityApplicationGroupIdentifier: "group.uk.co.catchpoledigital.Clement")!
+        return containerURL(forSecurityApplicationGroupIdentifier: "group.uk.co.catchpole.Clement")!
     }
 }

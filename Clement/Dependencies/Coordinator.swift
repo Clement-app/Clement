@@ -65,6 +65,7 @@ class Coordinator: CoordinatorProtocol {
         try localContext.save()
         
         try await applyEnabledRuleLists()
+        
         userDefaults.set(now.rawValue, forKey: UserDefaults.Keys.lastUpdated.rawValue)
     }
     

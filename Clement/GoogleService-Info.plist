@@ -9,7 +9,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>uk.co.catchpoledigital.Clement</string>
+	<string>uk.co.catchpole.Clement</string>
 	<key>PROJECT_ID</key>
 	<string>clement-6b4e8</string>
 	<key>STORAGE_BUCKET</key>
@@ -25,6 +25,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:1048964111835:ios:e0cd068f0937d78f6a5bfe</string>
+	<string>1:1048964111835:ios:8cab3ccbc92dcec76a5bfe</string>
 </dict>
 </plist>

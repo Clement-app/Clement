@@ -41,14 +41,13 @@ struct SettingsView: View {
         SettingGroup(title: "Filters", settings: [
             Setting(title: "Filter lists", iconSystemName: "line.3.horizontal.decrease", route: .filterLists),
             Setting(title: "Exclusions", iconSystemName: "x.circle", route: .DebugSettings),
-            Setting(title: "Updates", iconSystemName: "arrow.down.circle", route: .DebugSettings),
         ]),
         SettingGroup(title: "General", settings: [
             Setting(title: "About & acknowledgements", iconSystemName: "info.circle", route: .DebugSettings),
-            Setting(title: "Debug Settings", iconSystemName: "ant.circle", route: .DebugSettings),
+            Setting(title: "Debug settings", iconSystemName: "ant.circle", route: .DebugSettings),
         ]),
         SettingGroup(title: "Premium", settings: [
-            Setting(title: "Restore Purchases", iconSystemName: "arrow.clockwise", route: .DebugSettings),
+            Setting(title: "Restore purchases", iconSystemName: "arrow.clockwise", route: .DebugSettings),
         ])
     ]
     var body: some View {

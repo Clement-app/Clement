@@ -19,7 +19,7 @@ public enum ContentBlockerProviderError: Error {
 public class ContentBlockerProvider {
     public init() {}
     public func getJSONAttachmentForType(type: RuleListType) throws -> NSExtensionItem {
-        let documentsDirectory = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.uk.co.catchpoledigital.Clement")
+        let documentsDirectory = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.uk.co.catchpole.Clement")
         guard let archiveURL = documentsDirectory?.appendingPathComponent(fileNameForType(type: type)) else {
             throw ContentBlockerProviderError.invalidFileUrl
         }

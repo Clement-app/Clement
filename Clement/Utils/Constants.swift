@@ -6,5 +6,5 @@
 //
 
 struct Constants {
-    static let maxRuleCount = 150000
+    static let backgroundRefreshTopic = "BACKGROUND_REFRESH_TOPIC"
 }

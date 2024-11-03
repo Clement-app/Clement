@@ -55,13 +55,6 @@ extension Home {
             }
             await refresh()
         }
-        
-        func handleTotalRulesChange(ruleCount: Int) {
-            guard ruleCount > Constants.maxRuleCount else {
-                return
-            }
-            print("Over maximum rule count")
-        }
     }
 }
 

@@ -16,10 +16,10 @@ struct ContentBlocker {
 
 extension ContentBlocker {
     
-    static var coreIdentifier: String = "uk.co.catchpoledigital.Clement.SafariExtension"
-    static var privacyIdentifier: String = "uk.co.catchpoledigital.Clement.PrivacySafariExtension"
-    static var annoyanceIdentifier: String = "uk.co.catchpoledigital.Clement.AnnoyancesSafariExtension"
-    static var exclusionsIdentifier: String = "uk.co.catchpoledigital.Clement.ExclusionsSafariExtension"
+    static var coreIdentifier: String = "uk.co.catchpole.Clement.SafariExtension"
+    static var privacyIdentifier: String = "uk.co.catchpole.Clement.PrivacySafariExtension"
+    static var annoyanceIdentifier: String = "uk.co.catchpole.Clement.AnnoyancesSafariExtension"
+    static var exclusionsIdentifier: String = "uk.co.catchpole.Clement.ExclusionsSafariExtension"
     
     static func getBundleIdentifiers(for types: [RuleListType]) -> [String] {
         return types.map { getBundleIdentifiers(for: $0) }.flatMap { $0 }
